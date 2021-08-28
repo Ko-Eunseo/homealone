@@ -1,0 +1,94 @@
+/* none */
+body,
+h1,
+h2,
+ul,
+li,
+p,
+a,
+span {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: darkcyan;
+}
+body {
+  font-family: "Hahmlet", serif;
+  width: 100%;
+  background-color: #ffb900;
+}
+.wrap {
+  width: 70%;
+  margin: 1em auto;
+  text-align: center;
+  background-color: #fbe9c3;
+}
+h1 {
+  margin: 20px;
+  display: inline-block;
+}
+
+.fall-items {
+  padding-bottom: 20px;
+}
+.fall-item {
+  display: inline-block;
+  margin: 20px;
+  padding: 10px;
+  position: relative;
+}
+.fall-item p {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+}
+.item {
+  display: inline-block;
+}
+
+.again,
+.emoji {
+  display: inline-block;
+  margin: 20px;
+  padding: 10px;
+  font-size: 50px;
+}
+.contents-item {
+  border: 5px dashed lightgray;
+  margin: 20px 100px;
+}
+.contents-item.wfall {
+  display: inline-block;
+}
+.emoji.pie {
+  border-radius: 50%;
+  font-size: 80px;
+  border: 10px double tomato;
+  background-color: lightyellow;
+}
+.tfall a {
+  font-size: 30px;
+  color: orangered;
+  /* position: absolute; */
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+}
+.tfall:hover a {
+  font-size: 100px;
+  vertical-align: middle;
+}
+/* .fall-img {
+  position: relative;
+} */
+footer {
+  padding: 50px 0;
+  color: darkcyan;
+  display: inline-block;
+  box-sizing: content-box;
+}
