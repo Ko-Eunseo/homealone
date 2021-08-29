@@ -1,0 +1,54 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+.wrap {
+  width: 50%;
+  margin: 20px auto;
+  background-color: cadetblue;
+}
+.lay-one,
+.lay-two,
+.lay-three {
+  margin: 20px;
+  padding: 20px;
+}
+header,
+nav,
+section,
+aside,
+footer {
+  padding: 20px;
+  text-align: center;
+}
+header {
+  background-color: lightblue;
+}
+nav {
+  background-color: lightcoral;
+}
+section {
+  background-color: lightcyan;
+  overflow: hidden;
+}
+footer {
+  background-color: lightgray;
+}
+aside {
+  background-color: lightgoldenrodyellow;
+  float: right;
+}
+.section {
+  margin-right: 10px;
+  height: 100%;
+}
+#section {
+  height: 100%;
+}
+/* height 맞추기 위해 px값을 줌. */
+.lay-two aside,
+.lay-three aside {
+  height: 82px;
+  vertical-align: middle;
+}
