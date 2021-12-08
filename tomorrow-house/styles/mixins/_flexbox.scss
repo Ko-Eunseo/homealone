@@ -19,13 +19,14 @@ $flex-map: (
 }
 
 @mixin inline-flexbox($jc: center, $ai: center) {
-  display: flex;
+  display: inline-flex;
   align-items: _get-flex-value($ai);
   justify-content: _get-flex-value($jc);
 }
 
 @mixin column-flexbox($jc: center, $ai: center) {
   display: flex;
+  flex-direction: column;
   align-items: _get-flex-value($ai);
   justify-content: _get-flex-value($jc);
 }
