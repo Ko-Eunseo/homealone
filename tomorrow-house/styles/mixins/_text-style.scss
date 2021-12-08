@@ -3,15 +3,7 @@
   font-size: $font-size-12;
   line-height: $line-height-12;
   letter-spacing: $letter-spacing-12;
-
-  // 유효성 검사: type-of함수
 }
-
-/*실행
-p {
-  @include text-style-12($primary);
-}
-*/
 
 @mixin text-style-13() {
   font-size: $font-size-13;
@@ -64,6 +56,7 @@ p {
   }
 
   @if (type-of($color) == color) {
+    // 유효성 검사: type-of함수
     color: $color;
   }
 }
