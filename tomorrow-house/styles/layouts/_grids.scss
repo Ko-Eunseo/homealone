@@ -59,25 +59,25 @@ $lg-max-container: ($lg-unit + $gutter) * $lg-columns;
     }
   }
 
-  @include responsive('T') {
+  @include responsive(T) {
     max-width: $md-max-container;
     padding: 0 $md-margin;
 
     @for $i from 1 through $md-columns {
       //for 함수
-      .col-sm-#{$i} {
+      .col-md-#{$i} {
         //#{$i} : $i가 아니라 숫자가 뜨게 만들어줌
         width: percentage($i / $md-columns); //percentage 함수 자주 사용함
       }
     }
   }
-  @include responsive('D') {
+  @include responsive(D) {
     max-width: $lg-max-container;
     padding: 0;
 
     @for $i from 1 through $lg-columns {
       //for 함수
-      .col-sm-#{$i} {
+      .col-lg-#{$i} {
         //#{$i} : $i가 아니라 숫자가 뜨게 만들어줌
         width: ($lg-unit + $gutter) * $i; //percentage 함수 자주 사용함
       }
