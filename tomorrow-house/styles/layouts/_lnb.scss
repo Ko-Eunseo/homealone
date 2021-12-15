@@ -1,0 +1,43 @@
+.lnb {
+  overflow-x: auto;
+  border-bottom: 1px solid $border;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &-list {
+    @include inline-flexbox(start);
+    position: relative;
+    left: -8px;
+    white-space: nowrap;
+    // width: max-content; 호환성 이슈가 있음
+    // width: max-content 자식요소에 따라 부모요소 너비를 구함
+    // width: min-content 자식요소 최소한의 너비 구함
+  }
+
+  &-item {
+    a {
+      @include inline-flexbox;
+      @include text-style(13, $dark);
+      font-weight: 700;
+      height: 40px;
+      padding: 0 8px;
+
+      &:hover {
+        color: $blue;
+      }
+    }
+
+    &.is-active {
+      a {
+        color: $blue;
+        border-bottom: 2px solid $blue;
+      }
+    }
+
+    .ic-new {
+      color: $red;
+    }
+  }
+}
