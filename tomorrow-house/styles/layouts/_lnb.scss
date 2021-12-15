@@ -1,4 +1,6 @@
 .lnb {
+  $lnb-height-sm: 40px;
+  $lnb-height-md: 50px;
   $lnb-link-padding: 8px;
   $grid-margin: $sm-margin + $gutter / 2;
 
@@ -10,7 +12,7 @@
     margin-left: -#{$grid-margin};
     padding: 0 #{$grid-margin - $lnb-link-padding};
     white-space: nowrap;
-    height: 40px;
+    height: $lnb-height-sm;
     border-bottom: 1px solid $border;
 
     // width: max-content; 호환성 이슈가 있음
@@ -23,7 +25,7 @@
       @include inline-flexbox;
       @include text-style(13, $dark);
       font-weight: 700;
-      height: 40px;
+      height: $lnb-height-sm;
       padding: 0 8px;
       border-bottom: 2px solid transparent;
 
@@ -36,6 +38,26 @@
       a {
         color: $blue;
         border-bottom-color: $blue;
+      }
+    }
+  }
+
+  @include responsive(T) {
+    height: $lnb-height-md;
+    overflow-x: visible;
+    border-bottom: 1px solid $border;
+
+    &-list {
+      height: auto;
+      padding: 0;
+      margin-left: 0;
+      border-bottom: 0;
+    }
+
+    &-item {
+      a {
+        @include text-style(14);
+        height: $lnb-height-md;
       }
     }
   }
