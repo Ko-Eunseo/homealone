@@ -1,16 +1,17 @@
 .lnb {
-  overflow-x: auto;
-  border-bottom: 1px solid $border;
+  $lnb-link-padding: 8px;
+  $grid-margin: $sm-margin + $gutter / 2;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  overflow-x: auto;
 
   &-list {
     @include inline-flexbox(start);
-    position: relative;
-    left: -8px;
+    margin-left: -#{$grid-margin};
+    padding: 0 #{$grid-margin - $lnb-link-padding};
     white-space: nowrap;
+    height: 40px;
+    border-bottom: 1px solid $border;
+
     // width: max-content; 호환성 이슈가 있음
     // width: max-content 자식요소에 따라 부모요소 너비를 구함
     // width: min-content 자식요소 최소한의 너비 구함
@@ -23,6 +24,7 @@
       font-weight: 700;
       height: 40px;
       padding: 0 8px;
+      border-bottom: 2px solid transparent;
 
       &:hover {
         color: $blue;
@@ -32,12 +34,8 @@
     &.is-active {
       a {
         color: $blue;
-        border-bottom: 2px solid $blue;
+        border-bottom-color: $blue;
       }
-    }
-
-    .ic-new {
-      color: $red;
     }
   }
 }
