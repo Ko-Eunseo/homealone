@@ -1,6 +1,46 @@
 .product-carousel {
+  $grid-margin: 15px;
+
+  position: relative;
+
+  &-slider {
+    margin: 0 -#{$grid-margin};
+  }
+
   &-thumbnail {
-    display: none;
+    @include pos-center-x;
+    bottom: 16px;
+
+    .thumbnail {
+      &-list {
+        @include flexbox;
+      }
+
+      &-item {
+        @include flexbox; //불필요한 height 없애기 위해
+        margin: 0 4px;
+
+        &.tns-nav-active {
+          button {
+            opacity: 1;
+            transform: scale(1.3333333); //8px이 되도록 애니메이션을 줌
+          }
+        }
+
+        button {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: $white;
+          opacity: 0.7;
+          transition: opacity 100ms ease-in-out, transform 100ms ease-in-out;
+        }
+
+        img {
+          display: none;
+        }
+      }
+    }
   }
 
   img {
