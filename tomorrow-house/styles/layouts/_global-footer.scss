@@ -10,7 +10,7 @@
 
     .ic-chevron {
       font-size: 12px;
-      transform: rotate(90deg);
+      transform: rotate(-90deg);
       // 인라인요소는 먹지 않음
       display: inline-block;
       // so 인라인블록으로 바꿔줌
