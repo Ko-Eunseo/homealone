@@ -6,10 +6,10 @@
   border-bottom: 1px solid $border;
   background-color: $white;
 
-  .product-tab-list {
+  &-list {
     @include flexbox;
 
-    margin: 0 - ($grid-margin);
+    margin: 0 -#{$grid-margin};
   }
 
   &-item {
@@ -39,6 +39,35 @@
     .badge {
       color: $secondary;
       margin-left: 4px;
+    }
+  }
+
+  @include responsive(T) {
+    height: 54px;
+    margin: 40px 0;
+    background-color: $background;
+    border-bottom: 0;
+
+    &-list {
+      margin: 0;
+    }
+
+    &-item {
+      button {
+        @include text-style(16);
+
+        height: 54px;
+      }
+
+      .badge {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  @include responsive(D) {
+    &-item button:hover {
+      color: $blue;
     }
   }
 }
