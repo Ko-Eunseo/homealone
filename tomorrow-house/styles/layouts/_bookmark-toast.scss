@@ -13,6 +13,11 @@
   z-index: $bookmark-toast-level;
   background-color: $white;
   box-shadow: $popup-reversed;
+  display: none;
+
+  &.is-active {
+    display: flex;
+  }
 
   .bookmark-title {
     @include text-style(13, $primary);
@@ -44,6 +49,44 @@
     a,
     button {
       font-size: 13px;
+    }
+  }
+
+  @include responsive(D) {
+    @include pos-center-x(fixed);
+
+    padding-left: 56px;
+    padding-right: 20px;
+    bottom: 40px;
+    height: 80px;
+    max-width: 480px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: $popup-shadow;
+
+    .bookmark-title {
+      @include text-style(16);
+    }
+
+    .close-button {
+      left: (56px - $close-button-size) / 2;
+      font-size: 24px;
+
+      &:active,
+      &:hover {
+        color: $secondary;
+      }
+    }
+
+    .button-group {
+      a {
+        margin-right: 8px;
+      }
+
+      a,
+      button {
+        font-size: 14px;
+      }
     }
   }
 }
