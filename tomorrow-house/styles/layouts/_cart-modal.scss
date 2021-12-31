@@ -8,6 +8,11 @@
   overflow: hidden;
   width: calc(100% - #{$grid-margin * 2});
   max-width: 360px;
+  display: none;
+
+  &.is-active {
+    display: block;
+  }
 
   .cart-title {
     @include text-style(16, $dark);
