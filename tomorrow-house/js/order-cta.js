@@ -44,8 +44,8 @@ function toggleOrderCtaBookmark() {
   }
 
   countSpan.innerHTML = newCount.toLocaleString()
+  countSpan.setAttribute('aria-label', `북마크 ${newCount.toLocaleString()}회`)
   // toLocaleString(): ,넣어주는 함수
-
   this.classList.toggle('is-active')
 }
 
