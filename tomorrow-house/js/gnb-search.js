@@ -4,13 +4,16 @@ const gnbSearchHistory = gnbSearch.querySelector('.search-history')
 const gnbSearchHistoryList = gnbSearchHistory.querySelector('ol')
 
 const deletaAllButton = gnbSearchHistory.querySelector('.search-history-header button')
+const deleteBtnList = gnbSearchHistoryList.querySelectorAll('.delete-btn')
 
-console.log(deletaAllButton.innerHTML)
+function closeGnbSearchHistory() {
+  gnbSearchHistory.classList.remove('is-active')
+  window.removeEventListener('click', closeGnbSearchHistoryClickingoutside)
+}
 
-function closeGnbSearchHistory(e) {
+function closeGnbSearchHistoryClickingoutside(e) {
   if (!gnbSearch.contains(e.target)) {
-    gnbSearchHistory.classList.remove('is-active')
-    window.removeEventListener('click', closeGnbSearchHistory)
+    closeGnbSearchHistory()
   }
 }
 
@@ -22,7 +25,7 @@ function openGnbSearchHistory() {
   }
 
   if (!gnbSearchHistory.classList.contains('is-active')) {
-    window.addEventListener('click', closeGnbSearchHistory)
+    window.addEventListener('click', closeGnbSearchHistoryClickingoutside)
   }
   gnbSearchHistory.classList.add('is-active')
 }
@@ -32,7 +35,21 @@ gnbSearchInput.addEventListener('focus', openGnbSearchHistory)
 function deleteAllSearchHistories() {
   // gnbSearchHistoryList 안에 들어있는 모든 li 삭제
   gnbSearchHistoryList.innerHTML = '' //빈 문자열을 넣는다
-  gnbSearchHistory.classList.remove('is-active')
+  closeGnbSearchHistory()
 }
 
 deletaAllButton.addEventListener('click', deleteAllSearchHistories)
+
+function deleteSearchHistoryItem(e) {
+  e.stopPropagation() //이벤트전파 방지(이벤트는 전파된다.)
+  const itemToTelete = this.parentNode
+  gnbSearchHistoryList.removeChild(itemToTelete)
+
+  if (gnbSearchHistoryList.children.length === 0) {
+    closeGnbSearchHistory()
+  }
+}
+
+deleteBtnList.forEach((button) => {
+  button.addEventListener('click', deleteSearchHistoryItem)
+})
