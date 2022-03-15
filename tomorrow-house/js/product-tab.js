@@ -5,15 +5,21 @@ const TOP_HEADER_DESKTOP = 80 + 50 + 54
 const TOP_HEADER_MOBILE = 50 + 40 + 40
 
 let currentActiveTab = productTab.querySelector('.is-active')
+let disableUpdating = false
 
 function toggleActiveTab() {
   //1.is-active
   const tabItem = this.parentNode
 
   if (currentActiveTab != tabItem) {
+    disableUpdating = true
     tabItem.classList.add('is-active')
     currentActiveTab.classList.remove('is-active')
     currentActiveTab = tabItem
+
+    setTimeout(() => {
+      disableUpdating = false
+    }, 1000);
   }
 }
 // window.scrollBy({  //객체  top: ,  left: })
@@ -67,9 +73,14 @@ function detectTabPanelPosition() {
     productTabPanelPositionMap[id] = position //key = value
 
   })
+
+  updateActiveTabOnScroll()
 }
 
 function updateActiveTabOnScroll() {
+  if (disableUpdating) {
+    return //disableUpdating이 true면 함수실행x
+  }
   //스크롤 위치에 따라 activeTab 업데이트
   // 1. 현재 유저가 얼마만큼 스크롤을 했느냐 -> window.scrollY
   // 2. 각 tabPanel y축 위치 -> productTabPanelPositionMap
@@ -89,12 +100,24 @@ function updateActiveTabOnScroll() {
     newActiveTab = productTabBtnList[0] //상품정보버튼
   }
 
+  //추가: 끝까지 스크롤을 한 경우 newActiveTab = productTabBtnList[4]
+  //window.scrollY + window.innerHeight === body의 전체 height(document.body.offsetHeight)
+  //tablet일때 footer의 margin 때문에 html, body의 높이가 다름
+  //window.innerWidth < 1200 - orderCta, 56px
+  const bodyHeight = document.body.offsetHeight + (window.innerWidth < 1200 ? 56 : 0)
+  if (window.scrollY + window.innerHeight === bodyHeight) {
+    newActiveTab = productTabBtnList[4]
+  }
+
   if (newActiveTab) {
     newActiveTab = newActiveTab.parentNode
 
     if (newActiveTab !== currentActiveTab) {
       newActiveTab.classList.add('is-active')
-      currentActiveTab.classList.remove('is-active')
+      if (currentActiveTab !== null) {
+        //인덱스에 상품정보 탭이 갖고있던 is-active를 삭제했더니 나타났던 error 고침
+        currentActiveTab.classList.remove('is-active')
+      }
       currentActiveTab = newActiveTab
     }
   }
